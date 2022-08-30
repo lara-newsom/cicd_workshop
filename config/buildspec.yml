@@ -10,6 +10,13 @@ phases:
     commands:
       - echo Installing dependencies...
       - npm ci
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - echo Linting project...
+      - npm run-script lint
+      - echo Testing project...
+      - npm test
   build:
     commands:
       - echo Building project...
